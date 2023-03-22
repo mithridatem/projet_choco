@@ -1,8 +1,10 @@
 <?php
     //importer les ressources
     use App\Controller\UserController;
+    // ajouter avec use le RolesController
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
+    //include le model et le controller Roles
     include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
 
