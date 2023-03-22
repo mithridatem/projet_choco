@@ -6,14 +6,14 @@
         /*-----------------------
                 Attributs
         ------------------------*/
-        private $id_utilisateur;
-        private $nom_utilisateur;
-        private $prenom_utilisateur;
-        private $mail_utilisateur;
-        private $password_utilisateur;
-        private $image_utilisateur;
-        private $statut_utilisateur;
-        private $roles;
+        private ?int $id_utilisateur;
+        private ?string $nom_utilisateur;
+        private ?string $prenom_utilisateur;
+        private ?string $mail_utilisateur;
+        private ?string $password_utilisateur;
+        private ?string $image_utilisateur;
+        private ?bool $statut_utilisateur;
+        private ?Roles $roles;
         /*-----------------------
                 Constructeur
         ------------------------*/
