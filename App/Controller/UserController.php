@@ -21,17 +21,26 @@
                 if(!empty($nom) AND !empty($prenom)AND !empty($mail) AND !empty($password)){
                     //hash du mot de passe
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    $user = new Utilisateur();
+                    //instance d'un objet
+                    /* $user = new Utilisateur();
                     $user->setNomUtilisateur($nom);
                     $user->setPrenomUtilisateur($prenom);
                     $user->setMailUtilisateur($mail);
                     $user->setPasswordUtilisateur($password);
+                    echo '<pre>';
+                    var_dump($user);
+                    echo '</pre>';
+                    $user->addUser(); */
                     //version alternative avec $this
-                    /* $this->setNomUtilisateur($nom);
+                    $this->setNomUtilisateur($nom);
                     $this->setPrenomUtilisateur($prenom);
                     $this->setMailUtilisateur($mail);
-                    $this->setpasswordUtilisateur($password); */
-                    var_dump($user);
+                    $this->setPasswordUtilisateur($password);
+                    /* echo '<pre>';
+                    var_dump($this);
+                    echo '</pre>'; */
+                    $this->addUser();
+                    $msg = "Le compte : ".$mail." a été ajouté en BDD";
                 }
                 //sinon si les champs ne sont pas tous remplis
                 else{
