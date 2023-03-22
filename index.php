@@ -2,6 +2,7 @@
     //importer les ressources
     use App\Controller\UserController;
     include './App/Utils/BddConnect.php';
+    include './App/Utils/Fonctions.php';
     include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
 
