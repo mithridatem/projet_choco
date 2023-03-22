@@ -39,19 +39,20 @@
         public function getPasswordUtilisateur():?string{
             return $this->password_utilisateur;
         }
-        public function setNomUtilisateur($name):void{
+        public function setNomUtilisateur(?string $name):void{
             $this->nom_utilisateur = $name;
         }
-        public function setPrenomUtilisateur($firstName):void{
+        public function setPrenomUtilisateur(?string $firstName):void{
             $this->prenom_utilisateur = $firstName;
         }
-        public function setMailUtilisateur($mail):void{
+        public function setMailUtilisateur(?string $mail):void{
             $this->mail_utilisateur = $mail;
         }
-        public function setPasswordUtilisateur($pwd):void{
+        public function setPasswordUtilisateur(?string $pwd):void{
             $this->password_utilisateur = $pwd;
         }
-        /*-----------------------
+
+         /*-----------------------
                 Méthodes
         ------------------------*/
         //méthode pour ajouter un utilisateur en BDD

@@ -18,5 +18,6 @@
         <input type="password" name="password_utilisateur">
         <input type="submit" value="Ajouter" name="submit">
     </form>
+    <div id="error"><?php echo $msg; ?></div>
 </body>
 </html>
