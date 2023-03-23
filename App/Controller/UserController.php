@@ -66,5 +66,51 @@
             //importer la vue
             include './App/Vue/viewAddUser.php';
         }
+        //Fonction pour se connecter au site
+        public function connexionUser(){
+            //variable pour stocker les messages d'erreurs
+            $msg = "";
+            //Tester si le formulaire est submit
+            if(isset($_POST['submit'])){
+                //Nettoyer les inputs utilisateur
+                $mail = Fonctions::cleanInput($_POST['mail_utilisateur']); 
+                $password = Fonctions::cleanInput($_POST['password_utilisateur']);
+                //Tester si les champs sont remplis
+                if(!empty($mail) AND !empty($password)){
+                    //Setter les valeurs à l'objet
+                    $this->setMailUtilisateur($mail);
+                    $this->setPasswordUtilisateur($password);
+                    //Stokage du compte si il existe
+                    $data = $this->getUserByMail();
+                    //Tester si le compte existe
+                    if($data){
+                        //Test si le mot de passe est valide
+                        if(password_verify($password, $data[0]->password_utilisateur)){
+                            //Créer les super globales de Session
+                            $_SESSION['connected'] = true;
+                            $_SESSION['nom'] = $data[0]->nom_utilisateur;
+                            $_SESSION['prenom'] = $data[0]->prenom_utilisateur;
+                            $_SESSION['mail'] = $data[0]->mail_utilisateur;
+                            $_SESSION['id'] = $data[0]->id_utilisateur;
+                            $msg ="connecté";
+                        }
+                        //Test si le mot de passe est incorrect
+                        else{
+                            $msg = "Les informations de connexion sont invalides";
+                        }
+                    }
+                    //Test si le compte n'existe pas
+                    else{
+                        $msg = "Les informations de connexion sont invalides";
+                    }
+                }
+                //Test les champs sont vides
+                else{
+                    $msg = "Veuillez remplir tous les champs de formulaire";
+                } 
+            }
+            //import de la vue connexion
+            include './App/Vue/ViewConnexion.php';
+        }
     }
 ?>
