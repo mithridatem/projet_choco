@@ -21,6 +21,9 @@
         public function getNomRoles():?string{
             return $this->nom_roles;
         }
+        public function setIdRoles($id):void{
+            $this->id_roles = $id;
+        }
         public function setNomRoles($name):void{
             $this->nom_roles = $name;
         }

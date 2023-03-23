@@ -19,7 +19,9 @@
         ------------------------*/
         public function __construct(){
             //instancier un objet role quand on créé un
-            //$this->roles = new Roles('user');
+            $this->roles = new Roles();
+            $this->roles->setNomRoles('user');
+            $this->roles->setIdRoles(1);
         }
         /*-----------------------
             Getters et Setters
