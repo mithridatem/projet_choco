@@ -8,6 +8,8 @@
     <title>Ajouter un Utilisateur</title>
 </head>
 <body>
+    <!--import du menu -->
+    <?php include './App/Vue/viewMenu.php';?>
     <div class="form">
         <h3>Ajouter un compte utilisateur :</h3>
         <form action="" method="post">

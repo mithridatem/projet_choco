@@ -8,12 +8,16 @@
     <title>Add Roles</title>
 </head>
 <body>
-    <h3>Ajouter un role :</h3>
-    <form action="" method="post">
-        <label for="nom_roles">Saisir un role :</label>
-        <input type="text" name="nom_roles">
-        <input type="submit" value="Ajouter" name="submit">
-    </form>
-    <div id="error"><?php echo $msg ?></div>
+    <!--import du menu -->
+    <?php include './App/Vue/viewMenu.php';?>
+    <div class="form">
+        <h3>Ajouter un role :</h3>
+        <form action="" method="post">
+            <label for="nom_roles">Saisir un role :</label>
+            <input type="text" name="nom_roles">
+            <input type="submit" value="Ajouter" name="submit">
+        </form>
+        <div id="error"><?php echo $msg ?></div>
+    </div>
 </body>
 </html>
