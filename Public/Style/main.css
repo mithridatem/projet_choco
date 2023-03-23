@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Menu */
+#navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 10vh;
+    justify-content: space-between;
+    background-color: rgb(70, 70, 70);
+}
+li>a{
+    font-size: 1.5em;
+    color: whitesmoke;
+    text-decoration: none;
+}
+/*Formulaire*/
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+input, label, h3{
+    width: 30vw;
+    font-size: 1.3em;
+}
