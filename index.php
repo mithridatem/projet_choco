@@ -28,7 +28,7 @@
             $userController->insertUser();
             break;
         case '/projet/rolesAdd':
-            //appel de la fonction insertUser
+            //appel de la fonction insertRoles
             $rolesController->insertRoles();
             break;    
         default:
