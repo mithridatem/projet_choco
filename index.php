@@ -14,6 +14,8 @@
     $path = isset($url['path']) ? $url['path'] : '/';
     //instance des controllers
     $userController = new UserController();
+    //instancier le controller roles
+
     //routeur
     switch ($path) {
         case '/projet/':
@@ -23,6 +25,8 @@
             //appel de la fonction insertUser
             $userController->insertUser();
             break;
+        //case pour ajouter un roles
+        
         default:
             include './App/Vue/error.php';
             break;
