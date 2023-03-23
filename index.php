@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //importer les ressources
     use App\Controller\UserController;
     use App\Controller\RolesController;

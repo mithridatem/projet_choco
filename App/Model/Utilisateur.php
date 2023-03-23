@@ -83,7 +83,6 @@
             catch (\Exception $e) {
                 die('Erreur : '.$e->getMessage());
             }
-            
         }
         //méthode pour récupérer un utilisateur avec son mail
         public function getUserByMail():?array{
