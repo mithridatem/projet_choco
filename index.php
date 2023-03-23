@@ -1,10 +1,11 @@
 <?php
     //importer les ressources
     use App\Controller\UserController;
-    // ajouter avec use le RolesController
+    use App\Controller\RolesController;
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
-    //include le model et le controller Roles
+    include './App/Model/Roles.php';
+    include './App/Controller/RolesController.php';
     include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
 
@@ -14,6 +15,7 @@
     $path = isset($url['path']) ? $url['path'] : '/';
     //instance des controllers
     $userController = new UserController();
+    $rolesController = new RolesController();
     //instancier le controller roles
 
     //routeur
@@ -25,8 +27,10 @@
             //appel de la fonction insertUser
             $userController->insertUser();
             break;
-        //case pour ajouter un roles
-        
+        case '/projet/rolesAdd':
+            //appel de la fonction insertUser
+            $rolesController->insertRoles();
+            break;    
         default:
             include './App/Vue/error.php';
             break;
