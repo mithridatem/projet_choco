@@ -15,10 +15,17 @@
                 if(!empty($nom)){
                     //Setter les valeurs à l'objet
                     $this->setNomRoles($nom);
-                    //Ajouter en BDD le nouveau role
-                    $this->addRoles();
-                    //Afficher la confirmation
-                    $msg = "Le role : ".$nom." à été ajouté en BDD";
+                    //Test si le role existe déja
+                    if($this->getRolesByName()){
+                        $msg = "Le role : ".$nom." existe déja en BDD";
+                    }
+                    //Test si il n'existe pas 
+                    else{
+                        //Ajouter en BDD le nouveau role
+                        $this->addRoles();
+                        //Afficher la confirmation
+                        $msg = "Le role : ".$nom." à été ajouté en BDD";
+                    }
                 }
                 //Test si les champs sont vides
                 else{
