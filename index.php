@@ -1,4 +1,5 @@
 <?php
+    //démarrage de la session
     session_start();
     //importer les ressources
     use App\Controller\UserController;
@@ -31,7 +32,10 @@
         case '/projet/rolesAdd':
             //appel de la fonction insertRoles
             $rolesController->insertRoles();
-            break;    
+            break;
+        case '/projet/connexion':
+            $userController->connexionUser();
+            break;  
         default:
             include './App/Vue/error.php';
             break;

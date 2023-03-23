@@ -18,8 +18,9 @@
                 Constructeur
         ------------------------*/
         public function __construct(){
-            //instancier un objet role quand on créé un
+            //instancier un objet role quand on créé un utilisateur
             $this->roles = new Roles();
+            //Set de l'id_roles
             $this->roles->setIdRoles(1);
         }
         /*-----------------------
@@ -91,7 +92,7 @@
                 //récupération du mail
                 $mail = $this->mail_utilisateur;
                 //préparation de la requête
-                $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur
+                $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur,
                 mail_utilisateur, password_utilisateur, image_utilisateur, statut_utilisateur, id_roles
                 FROM utilisateur WHERE mail_utilisateur = ?');
                 //bind des paramètres
