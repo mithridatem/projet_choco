@@ -20,8 +20,7 @@
         public function __construct(){
             //instancier un objet role quand on créé un
             $this->roles = new Roles();
-            $this->roles->setNomRoles('user');
-            $this->roles->setIdRoles(1);
+            $this->roles->setIdRoles(2);
         }
         /*-----------------------
             Getters et Setters
@@ -54,7 +53,7 @@
             $this->password_utilisateur = $pwd;
         }
 
-         /*-----------------------
+        /*-----------------------
                 Méthodes
         ------------------------*/
         //méthode pour ajouter un utilisateur en BDD
@@ -65,14 +64,19 @@
                 $prenom = $this->prenom_utilisateur;
                 $mail = $this->mail_utilisateur;
                 $password = $this->password_utilisateur;
+                //récupération du role
+                $id = $this->roles->getIdRoles();
                 //préparer la requête
                 $req = $this->connexion()->prepare('INSERT INTO utilisateur(nom_utilisateur, 
-                prenom_utilisateur, mail_utilisateur, password_utilisateur) VALUES(?,?,?,?)');
+                prenom_utilisateur, mail_utilisateur, 
+                password_utilisateur, id_roles) VALUES(?,?,?,?,?)');
                 //bind les paramètres
                 $req->bindParam(1, $nom, \PDO::PARAM_STR);
                 $req->bindParam(2, $prenom, \PDO::PARAM_STR);
                 $req->bindParam(3, $mail, \PDO::PARAM_STR);
                 $req->bindParam(4, $password, \PDO::PARAM_STR);
+                //Bind du role
+                $req->bindParam(5, $id, \PDO::PARAM_INT);
                 //Exécuter la requête
                 $req->execute();
             } 
