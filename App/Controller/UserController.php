@@ -70,6 +70,7 @@
         public function connexionUser(){
             //variable pour stocker les messages d'erreurs
             $msg = "";
+            $valide = "";
             //Tester si le formulaire est submit
             if(isset($_POST['submit'])){
                 //Nettoyer les inputs utilisateur
@@ -92,7 +93,7 @@
                             $_SESSION['prenom'] = $data[0]->prenom_utilisateur;
                             $_SESSION['mail'] = $data[0]->mail_utilisateur;
                             $_SESSION['id'] = $data[0]->id_utilisateur;
-                            $msg ="connecté";
+                            $valide ="connecté";
                         }
                         //Test si le mot de passe est incorrect
                         else{

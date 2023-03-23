@@ -18,7 +18,8 @@
             <input type="password" name="password_utilisateur">
             <input type="submit" value="Connexion" name="submit">
         </form>
-        <div id="error"><?php echo $msg ?></div>
+        <div id="error"><?php echo $msg; ?></div>
+        <div id="valide"><?php echo $valide; ?></div>
      </div>
 </body>
 </html>
