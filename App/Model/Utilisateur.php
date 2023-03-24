@@ -53,7 +53,6 @@
         public function setPasswordUtilisateur(?string $pwd):void{
             $this->password_utilisateur = $pwd;
         }
-
         /*-----------------------
                 Méthodes
         ------------------------*/
