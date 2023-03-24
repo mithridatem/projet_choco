@@ -1,7 +1,7 @@
 <?php
-    //démarrage de la session
+    //Démarrage de la session
     session_start();
-    //importer les ressources
+    //Importer les ressources
     use App\Controller\UserController;
     use App\Controller\RolesController;
     use App\Controller\ChocoblastController;
@@ -22,19 +22,15 @@
     $userController = new UserController();
     $rolesController = new RolesController();
     $chocoblastController = new ChocoblastController();
-    //instancier le controller roles
-
     //routeur
     switch ($path) {
         case '/projet/':
             include './App/Vue/home.php';
             break;
         case '/projet/userAdd':
-            //appel de la fonction insertUser
             $userController->insertUser();
             break;
         case '/projet/rolesAdd':
-            //appel de la fonction insertRoles
             $rolesController->insertRoles();
             break;
         case '/projet/chocoblastAdd':
