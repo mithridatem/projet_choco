@@ -109,5 +109,26 @@
                 die('Erreur : '.$e->getMessage());
             }
         }
+        //Méthode qui retourne tous les utilisateurs
+        public function getUserAll():?array{
+            try{
+                //Préparer la requête
+                $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, 
+                prenom_utilisateur, mail_utilisateur, image_utilisateur FROM utilisateur');
+                //Exécuter la requête
+                $req->execute();
+                //Récupérer la liste des utilisateurs
+                $data = $req->fetchAll(\PDO::FETCH_OBJ);
+                //retourner le tableau
+                return $data;
+            } 
+            catch(\Exception $e){
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+        //Méthode toString
+        public function __toString():string{
+            return $this->nom_utilisateur;
+        }
     }
 ?>
