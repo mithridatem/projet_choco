@@ -9,8 +9,7 @@ use App\Model\Chocoblast;
             //Test si l'utilisateur est connecté
             if(isset($_SESSION['connected'])){
                 //Générer la liste déroulante
-                $user = new Utilisateur();
-                $data = $user->getUserAll();
+                $data = Utilisateur::getUserAll();
                 //Variable pour stocker les messages d'erreur
                 $msg = "";
                 //Tester si le formulaire est submit
