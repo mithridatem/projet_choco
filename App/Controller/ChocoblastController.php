@@ -53,5 +53,17 @@ use App\Model\Chocoblast;
                 header('Location: ./');
             }
         }
+        //Méthode qui va afficher tous les chocoblasts
+        public function showAllChocoblast():void{
+            //Variables pour les messages
+            $msg = "";
+            $chocos = $this->getAllChocoblast();
+            //Test si il existe des chocoblats
+            if(!$chocos){
+                $msg = "Il n'y à aucun chocoblast dans la BDD";  
+            }
+            //Importer la vue
+            include './App/Vue/ViewShowAllChocoblast.php';
+        } 
     }
 ?>

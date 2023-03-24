@@ -113,6 +113,21 @@ use App\Model\Utilisateur;
             //Retourner le tableau
             return $data;
         }
+        //méthode qui retourne tous les chocoblasts
+        public function getAllChocoblast():?array{
+            //Préparer la requête
+            $req = $this->connexion()->prepare('SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, auteur.nom_utilisateur AS nom_auteur, 
+            auteur.prenom_utilisateur AS prenom_auteur, cible.nom_utilisateur AS nom_cible, 
+            cible.prenom_utilisateur AS prenom_cible FROM chocoblast 
+            INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
+            INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur');
+            //Exécution de la requête
+            $req->execute();
+            //Récupérer le chocoblast
+            $data = $req->fetchAll(\PDO::FETCH_OBJ);
+            //Retourner le tableau
+            return $data;
+        }
         //Méthode toString
         public function __toString():string{
             return $this->slogan_chocoblast;

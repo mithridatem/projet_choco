@@ -36,6 +36,9 @@
         case '/projet/chocoblastAdd':
             $chocoblastController->inserChocoblast();
             break;
+        case '/projet/chocoblastAll':
+            $chocoblastController->showAllChocoblast();
+            break;
         case '/projet/connexion':
             $userController->connexionUser();
             break;
