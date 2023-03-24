@@ -113,7 +113,7 @@
             }
         }
         //Méthode qui retourne tous les utilisateurs
-        public function getUserAll():?array{
+        public static function getUserAll():?array{
             try{
                 //Préparer la requête
                 $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, 
