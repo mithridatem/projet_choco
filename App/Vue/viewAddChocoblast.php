@@ -18,10 +18,16 @@
             <input type="date" name="date_chocoblast">
             <label for="cible_chocoblast">Choisir votre cible :</label>
             <select name="cible_chocoblast">
-                <!-- générer la liste des utilisateur en PHP -->
+                <!-- générer la liste des utilisateurs en PHP -->
+                <?php
+                    foreach($data as $value){
+                        echo '<option value='.$value->id_utilisateur.'>'.$value->nom_utilisateur.'</option>';
+                    }
+                ?>
             </select>
             <input type="submit" value="Ajouter" name="submit">
         </form>
+        <div class="error"><?php  echo $msg ?></div>
     </div>
 </body>
 </html>
