@@ -9,7 +9,8 @@ use App\Model\Chocoblast;
             //Test si l'utilisateur est connecté
             if(isset($_SESSION['connected'])){
                 //Générer la liste déroulante
-                $data = Utilisateur::getUserAll();
+                $user = new Utilisateur();
+                $data = $user->getUserAll();
                 //Variable pour stocker les messages d'erreur
                 $msg = "";
                 //Tester si le formulaire est submit
@@ -30,7 +31,7 @@ use App\Model\Chocoblast;
                         $this->getAuteurChocoblast()->setIdUtilisateur($auteur);
                         //Ajouter en BDD le chocoblast
                         $this->addChocoblast();
-                        $msg = "Le chocoblast : '.$slogan.' à été ajouté en BDD";
+                        $msg = "Le chocoblast : ".$slogan." à été ajouté en BDD";
                     }
                     //Test sinon les champs sont vides
                     else{
