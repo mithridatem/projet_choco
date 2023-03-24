@@ -46,7 +46,7 @@ use App\Model\Utilisateur;
         public function setIdChocoblast(?int $id):void{
             $this->id_chocoblast = $id;
         }
-        public function setSloganChocoblast(?int $slogan):void{
+        public function setSloganChocoblast(?string $slogan):void{
             $this->slogan_chocoblast = $slogan;
         }
         public function setDateChocoblast(?string $date):void{
@@ -65,7 +65,7 @@ use App\Model\Utilisateur;
                 Méthodes
         ------------------------*/
         //Méthode qui ajoute un chocoblast en BDD
-        public function  addChocoblast():void{
+        public function addChocoblast():void{
             try{
                 //Récupérer les valeurs de l'objet
                 $slogan = $this->getSloganChocoblast();

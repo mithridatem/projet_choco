@@ -4,12 +4,15 @@
     //importer les ressources
     use App\Controller\UserController;
     use App\Controller\RolesController;
+    use App\Controller\ChocoblastController;
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
     include './App/Model/Roles.php';
     include './App/Controller/RolesController.php';
     include './App/Model/Utilisateur.php';
     include './App/Controller/UserController.php';
+    include './App/Model/Chocoblast.php';
+    include './App/Controller/ChocoblastController.php';
 
     //Analyse de l'URL avec parse_url() et retourne ses composants
     $url = parse_url($_SERVER['REQUEST_URI']);
@@ -18,6 +21,7 @@
     //instance des controllers
     $userController = new UserController();
     $rolesController = new RolesController();
+    $chocoblastController = new ChocoblastController();
     //instancier le controller roles
 
     //routeur
@@ -33,12 +37,15 @@
             //appel de la fonction insertRoles
             $rolesController->insertRoles();
             break;
+        case '/projet/chocoblastAdd':
+            $chocoblastController->inserChocoblast();
+            break;
         case '/projet/connexion':
             $userController->connexionUser();
             break;
         case '/projet/deconnexion':
-        $userController->deconnexionUser();
-        break;
+            $userController->deconnexionUser();
+            break;
         default:
             include './App/Vue/error.php';
             break;

@@ -41,6 +41,9 @@
         public function getPasswordUtilisateur():?string{
             return $this->password_utilisateur;
         }
+        public function setIdUtilisateur(?int $id):void{
+            $this->id_utilisateur = $id;
+        }
         public function setNomUtilisateur(?string $name):void{
             $this->nom_utilisateur = $name;
         }

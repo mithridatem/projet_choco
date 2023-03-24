@@ -4,7 +4,8 @@
 ?>  
     <!-- connecté -->
     <div id="navbar">
-        <li><a href="./">Home</a></li> 
+        <li><a href="./">Home</a></li>
+        <li><a href="./chocoblastAdd">Ajouter chocoblast</a></li>
         <li><a href="./deconnexion">Déconnexion</a></li>
     </div>
 <?php
