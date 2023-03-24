@@ -29,9 +29,16 @@ use App\Model\Chocoblast;
                         $this->setDateChocoblast($date);
                         $this->getCibleChocoblast()->setIdUtilisateur($cible);
                         $this->getAuteurChocoblast()->setIdUtilisateur($auteur);
-                        //Ajouter en BDD le chocoblast
-                        $this->addChocoblast();
-                        $msg = "Le chocoblast : ".$slogan." à été ajouté en BDD";
+                        //Tester si le chocoblast existe déja (Vérification des doublons)
+                        if($this->getChocoblastByInfo()){
+                            $msg = "Le chocoblast : ".$slogan." Existe déja en BDD";
+                        }
+                        //Tester sinon il n'existe pas
+                        else{
+                            //Ajouter en BDD le chocoblast
+                            $this->addChocoblast();
+                            $msg = "Le chocoblast : ".$slogan." à été ajouté en BDD";
+                        }
                     }
                     //Test sinon les champs sont vides
                     else{

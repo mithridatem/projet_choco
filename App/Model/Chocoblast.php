@@ -90,6 +90,29 @@ use App\Model\Utilisateur;
                 die('Erreur : '.$e->getMessage());
             }
         }
+        //Méthode qui retourne un chocoblast par ces informations
+        public function getChocoblastByInfo():?array{
+            //Récupération des valeurs de l'objet
+            $slogan = $this->getSloganChocoblast();
+            $date = $this->getDateChocoblast();
+            $cible = $this->getCibleChocoblast()->getIdUtilisateur();
+            $auteur = $this->getAuteurChocoblast()->getIdUtilisateur();
+            //Préparer la requête
+            $req = $this->connexion()->prepare('SELECT id_chocoblast, slogan_chocoblast 
+            FROM chocoblast WHERE slogan_chocoblast = ? AND date_chocoblast = ?
+            AND cible_chocoblast = ? AND auteur_chocoblast = ?');
+            //Bind des paramètres
+            $req->bindParam(1, $slogan, \PDO::PARAM_STR);
+            $req->bindParam(2, $date, \PDO::PARAM_STR);
+            $req->bindParam(3, $cible, \PDO::PARAM_INT);
+            $req->bindParam(4, $auteur, \PDO::PARAM_INT);
+            //Exécution de la requête
+            $req->execute();
+            //Récupérer le chocoblast
+            $data = $req->fetchAll(\PDO::FETCH_OBJ);
+            //Retourner le tableau
+            return $data;
+        }
         //Méthode toString
         public function __toString():string{
             return $this->slogan_chocoblast;
