@@ -35,7 +35,10 @@
             break;
         case '/projet/connexion':
             $userController->connexionUser();
-            break;  
+            break;
+        case '/projet/deconnexion':
+        $userController->deconnexionUser();
+        break;
         default:
             include './App/Vue/error.php';
             break;
