@@ -89,7 +89,10 @@ use App\Model\Utilisateur;
             catch (\Exception $e){
                 die('Erreur : '.$e->getMessage());
             }
-        }   
-        
+        }
+        //Méthode toString
+        public function __toString():string{
+            return $this->slogan_chocoblast;
+        }
     }
 ?>
