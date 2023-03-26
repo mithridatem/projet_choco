@@ -13,7 +13,6 @@
     <section class="formContainer">
         <h3>Mettre à jour le chocoblast :</h3>
         <form action="" method="post">
-            <input type="hidden" name="id_chocoblast" value="<?=$id?>">
             <label for="slogan_chocoblast">Saisir votre slogan :</label>
             <input type="text" name="slogan_chocoblast">
             <label for="date_chocoblast">Saisir la date :</label>
