@@ -32,10 +32,13 @@
                 $rolesController->insertRoles();
                 break;
             case '/projet/chocoblastAdd':
-                $chocoblastController->inserChocoblast();
+                $chocoblastController->insertChocoblast();
                 break;
             case '/projet/chocoblastAll':
                 $chocoblastController->showAllChocoblast();
+                break;
+            case '/projet/chocoblastDelete':
+                $chocoblastController->deleteChocoblastById();
                 break;
             case '/projet/deconnexion':
                 $userController->deconnexionUser();
@@ -45,26 +48,27 @@
                 break;
             }
     }
-    //routeur déconnecté
+    //routeur no connecté
     else{
-    switch ($path) {
-        case '/projet/':
-            include './App/Vue/home.php';
-            break;
-        case '/projet/userAdd':
-            $userController->insertUser();
-            break;
-        case '/projet/chocoblastAll':
-            $chocoblastController->showAllChocoblast();
-            break;
-        case '/projet/connexion':
-            $userController->connexionUser();
-            break;
-        default:
-            include './App/Vue/error.php';
-            break;
+        switch ($path) {
+            case '/projet/':
+                include './App/Vue/home.php';
+                break;
+            case '/projet/userAdd':
+                $userController->insertUser();
+                break;
+            case '/projet/chocoblastAll':
+                $chocoblastController->showAllChocoblast();
+                break;
+            case '/projet/chocoblastDelete':
+                header('Location: ./chocoblastAll');
+                break;
+            case '/projet/connexion':
+                $userController->connexionUser();
+                break;
+            default:
+                include './App/Vue/error.php';
+                break;
+        }
     }
-}
-    //routeur non connecté
-
 ?>
