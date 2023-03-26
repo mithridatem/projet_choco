@@ -10,7 +10,8 @@
 <body>
     <!-- Import du menu -->
     <?php include './App/Vue/viewMenu.php'; ?>
-    <div class="form">
+    <section class="formContainer">
+        <h3>Ajouter un chocoblast :</h3>
         <form action="" method="post">
             <label for="slogan_chocoblast">Saisir votre slogan :</label>
             <input type="text" name="slogan_chocoblast">
@@ -27,7 +28,14 @@
             </select>
             <input type="submit" value="Ajouter" name="submit">
         </form>
-        <div class="error"><?php  echo $msg ?></div>
+    </section>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p><?= $msg ?></p>
+        </div>
     </div>
 </body>
 </html>

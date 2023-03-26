@@ -19,30 +19,16 @@
                 $password = Fonctions::cleanInput($_POST['password_utilisateur']);
                 //tester si les champs sont remplis
                 if(!empty($nom) AND !empty($prenom)AND !empty($mail) AND !empty($password)){
-                    /* //version avec un objet
-                    $user = new Utilisateur();
-                    $user->setMailUtilisateur($mail);
-                    //tester si le compte existe déja
-                    if($user->getUserByMail()){
-                        $msg = "Les informations sont incorrectes";
-                    }
-                    else{
-                        //hash du mot de passe
-                        $password = password_hash($password, PASSWORD_DEFAULT);
-                        //version alternative avec $this
-                        $user->setNomUtilisateur($nom);
-                        $user->setPrenomUtilisateur($prenom);
-                        $user->setPasswordUtilisateur($password);
-                        //ajout du compte en BDD
-                        $user->addUser();
-                        //affichage de l'erreur
-                        $msg = "Le compte : ".$mail." a été ajouté en BDD";
-                    } */
                     //récupérer le mail dans un objet
                     $this->setMailUtilisateur($mail);
                     //tester si le compte existe déja
                     if($this->getUserByMail()){
                         $msg = "Les informations sont incorrectes";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                     //test si le compte n'existe pas
                     else{
@@ -56,11 +42,21 @@
                         $this->addUser();
                         //affichage de l'erreur
                         $msg = "Le compte : ".$mail." a été ajouté en BDD";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                 }
                 //sinon si les champs ne sont pas tous remplis
                 else{
                     $msg = "Veuillez remplir tous les champs du formulaire";
+                    echo '<script>
+                        setTimeout(()=>{
+                            modal.style.display = "block";
+                        }, 500);
+                    </script>';
                 }
             }
             //importer la vue
@@ -70,7 +66,6 @@
         public function connexionUser(){
             //variable pour stocker les messages d'erreurs
             $msg = "";
-            $valide = "";
             //Tester si le formulaire est submit
             if(isset($_POST['submit'])){
                 //Nettoyer les inputs utilisateur
@@ -93,21 +88,35 @@
                             $_SESSION['prenom'] = $data[0]->prenom_utilisateur;
                             $_SESSION['mail'] = $data[0]->mail_utilisateur;
                             $_SESSION['id'] = $data[0]->id_utilisateur;
-                            $valide ="connecté";
                         }
                         //Test si le mot de passe est incorrect
                         else{
                             $msg = "Les informations de connexion sont invalides";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
                         }
                     }
                     //Test si le compte n'existe pas
                     else{
                         $msg = "Les informations de connexion sont invalides";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                 }
                 //Test les champs sont vides
                 else{
                     $msg = "Veuillez remplir tous les champs de formulaire";
+                    echo '<script>
+                        setTimeout(()=>{
+                            modal.style.display = "block";
+                        }, 500);
+                    </script>';
                 } 
             }
             //import de la vue connexion

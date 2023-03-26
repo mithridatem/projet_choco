@@ -22,7 +22,31 @@
     $userController = new UserController();
     $rolesController = new RolesController();
     $chocoblastController = new ChocoblastController();
-    //routeur
+    //routeur connecte
+    if(isset($_SESSION['connected'])){
+        switch ($path) {
+            case '/projet/':
+                include './App/Vue/home.php';
+                break;
+            case '/projet/rolesAdd':
+                $rolesController->insertRoles();
+                break;
+            case '/projet/chocoblastAdd':
+                $chocoblastController->inserChocoblast();
+                break;
+            case '/projet/chocoblastAll':
+                $chocoblastController->showAllChocoblast();
+                break;
+            case '/projet/deconnexion':
+                $userController->deconnexionUser();
+                break;
+            default:
+                include './App/Vue/error.php';
+                break;
+            }
+    }
+    //routeur déconnecté
+    else{
     switch ($path) {
         case '/projet/':
             include './App/Vue/home.php';
@@ -30,23 +54,17 @@
         case '/projet/userAdd':
             $userController->insertUser();
             break;
-        case '/projet/rolesAdd':
-            $rolesController->insertRoles();
-            break;
-        case '/projet/chocoblastAdd':
-            $chocoblastController->inserChocoblast();
-            break;
         case '/projet/chocoblastAll':
             $chocoblastController->showAllChocoblast();
             break;
         case '/projet/connexion':
             $userController->connexionUser();
             break;
-        case '/projet/deconnexion':
-            $userController->deconnexionUser();
-            break;
         default:
             include './App/Vue/error.php';
             break;
     }
+}
+    //routeur non connecté
+
 ?>
