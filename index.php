@@ -40,6 +40,9 @@
             case '/projet/chocoblastDelete':
                 $chocoblastController->deleteChocoblastById();
                 break;
+            case '/projet/chocoblastUpdate':
+                $chocoblastController->updateChocoblastById();
+                break;
             case '/projet/deconnexion':
                 $userController->deconnexionUser();
                 break;
@@ -61,6 +64,9 @@
                 $chocoblastController->showAllChocoblast();
                 break;
             case '/projet/chocoblastDelete':
+                header('Location: ./chocoblastAll');
+                break;
+            case '/projet/chocoblastUpdate':
                 header('Location: ./chocoblastAll');
                 break;
             case '/projet/connexion':

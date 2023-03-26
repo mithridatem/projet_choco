@@ -136,17 +136,17 @@ use App\Model\Utilisateur;
             $id = $this->id_chocoblast;
             $slogan = $this->slogan_chocoblast;
             $date = $this->date_chocoblast;
-            $cible = $this->cible_chocoblast;
-            $auteur = $this->auteur_chocoblast;
+            $cible = $this->getCibleChocoblast()->getIdUtilisateur();
+            $auteur = $this->getAuteurChocoblast()->getIdUtilisateur();
             $req = $this->connexion()->prepare('UPDATE chocoblast 
             SET slogan_chocoblast = ?, date_chocoblast = ?, 
             cible_chocoblast = ?, auteur_chocoblast = ?
             WHERE id_chocoblast = ?');
-            $req->bindParam(1, $slogan, \PDO::PARAM_INT);
+            $req->bindParam(1, $slogan, \PDO::PARAM_STR);
             $req->bindParam(2, $date, \PDO::PARAM_STR);
-            $req->bindParam(3, $cible, \PDO::PARAM_INT);
-            $req->bindParam(4, $auteur, \PDO::PARAM_INT);
-            $req->bindParam(5, $id, \PDO::PARAM_INT);
+            $req->bindParam(3, $cible, \PDO::PARAM_STR);
+            $req->bindParam(4, $auteur, \PDO::PARAM_STR);
+            $req->bindParam(5, $id, \PDO::PARAM_STR);
             $req->execute();
         }
         //Méthode qui supprime un chocoblast (passe le statut_chocoblast = 0)
