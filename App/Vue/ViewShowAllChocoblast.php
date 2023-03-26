@@ -8,7 +8,7 @@
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./Public/Script/script.js" defer></script>
-    <title>Add Roles</title>
+    <title>All Chocoblast</title>
 </head>
 <body>
     <!--import du menu -->
@@ -28,8 +28,8 @@
                 <p><?=$value->prenom_auteur?></p>
                 <p><?=$value->date_chocoblast?></p>
                 <div>
-                    <i class="fa-solid fa-pen"></i>
-                    <i class="fa-solid fa-trash-can"></i> 
+                    <a href="./chocoblastUpdate?id_chocoblast=<?=$value->id_chocoblast?>&id_cible=<?=$value->id_cible?>"><i class="fa-solid fa-pen"></i></a>
+                    <a href="./chocoblastDelete?id_chocoblast=<?=$value->id_chocoblast?>"><i class="fa-solid fa-trash-can"></i></a> 
                 </div>
             </div>
         <?php    

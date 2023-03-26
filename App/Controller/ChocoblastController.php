@@ -5,7 +5,7 @@ use App\Model\Utilisateur;
 use App\Model\Chocoblast;
     class ChocoblastController extends Chocoblast{
         //Méthode qui va ajouter un chocoblast
-        public function inserChocoblast():void{
+        public function insertChocoblast():void{
             //Test si l'utilisateur est connecté
             if(isset($_SESSION['connected'])){
                 //Générer la liste déroulante
@@ -84,6 +84,27 @@ use App\Model\Chocoblast;
             }
             //Importer la vue
             include './App/Vue/ViewShowAllChocoblast.php';
-        } 
+        }
+        // Méthode pour supprimer un chocoblast
+        public function deleteChocoblastById(): void{
+            //Test si l'utilisateur est connecté
+            if(isset($_SESSION['connected'])){
+                //Test si le paramètre id_chocoblast existe
+                if(isset($_GET['id_chocoblast'])){
+                    //Nettoyage du paramètre
+                    $id = Fonctions::cleanInput($_GET['id_chocoblast']);
+                    //Set de la valeur
+                    $this->setIdChocoblast($id);
+                    //Suppression du chocoblast
+                    $this->deleteChocoblast();
+                    //Redirection vers la page afficher 
+                    header('Location: ./chocoblastAll');
+                }
+            }
+            else{
+                //Redirection vers la page afficher 
+                header('Location: ./chocoblastAll');
+            }
+        }
     }
 ?>

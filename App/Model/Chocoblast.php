@@ -113,20 +113,49 @@ use App\Model\Utilisateur;
             //Retourner le tableau
             return $data;
         }
-        //méthode qui retourne tous les chocoblasts
+        //Méthode qui retourne tous les chocoblasts actif (statut_chocoblast = 1)
         public function getAllChocoblast():?array{
             //Préparer la requête
-            $req = $this->connexion()->prepare('SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, auteur.nom_utilisateur AS nom_auteur, 
-            auteur.prenom_utilisateur AS prenom_auteur, cible.nom_utilisateur AS nom_cible, 
-            cible.prenom_utilisateur AS prenom_cible FROM chocoblast 
+            $req = $this->connexion()->prepare('SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
+            auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
+            auteur.id_utilisateur AS id_auteur, 
+            cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
+            cible.id_utilisateur AS id_cible FROM chocoblast 
             INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
-            INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur');
+            INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
+            WHERE statut_chocoblast = 1');
             //Exécution de la requête
             $req->execute();
             //Récupérer le chocoblast
             $data = $req->fetchAll(\PDO::FETCH_OBJ);
             //Retourner le tableau
             return $data;
+        }
+        //Méthode qui met à jour un chocoblast
+        public function updateChocoblast():void{
+            $id = $this->id_chocoblast;
+            $slogan = $this->slogan_chocoblast;
+            $date = $this->date_chocoblast;
+            $cible = $this->cible_chocoblast;
+            $auteur = $this->auteur_chocoblast;
+            $req = $this->connexion()->prepare('UPDATE chocoblast 
+            SET slogan_chocoblast = ?, date_chocoblast = ?, 
+            cible_chocoblast = ?, auteur_chocoblast = ?
+            WHERE id_chocoblast = ?');
+            $req->bindParam(1, $slogan, \PDO::PARAM_INT);
+            $req->bindParam(2, $date, \PDO::PARAM_STR);
+            $req->bindParam(3, $cible, \PDO::PARAM_INT);
+            $req->bindParam(4, $auteur, \PDO::PARAM_INT);
+            $req->bindParam(5, $id, \PDO::PARAM_INT);
+            $req->execute();
+        }
+        //Méthode qui supprime un chocoblast (passe le statut_chocoblast = 0)
+        public function deleteChocoblast():void{
+            $id = $this->id_chocoblast;
+            $req = $this->connexion()->prepare('UPDATE chocoblast SET statut_chocoblast = 0
+            WHERE id_chocoblast = ?');
+            $req->bindParam(1, $id, \PDO::PARAM_INT);
+            $req->execute();
         }
         //Méthode toString
         public function __toString():string{
