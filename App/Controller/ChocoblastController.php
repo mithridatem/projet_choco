@@ -32,17 +32,32 @@ use App\Model\Chocoblast;
                         //Tester si le chocoblast existe déja (Vérification des doublons)
                         if($this->getChocoblastByInfo()){
                             $msg = "Le chocoblast : ".$slogan." Existe déja en BDD";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
                         }
                         //Tester sinon il n'existe pas
                         else{
                             //Ajouter en BDD le chocoblast
                             $this->addChocoblast();
                             $msg = "Le chocoblast : ".$slogan." à été ajouté en BDD";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
                         }
                     }
                     //Test sinon les champs sont vides
                     else{
                         $msg = "Veuillez remplir les champs de formulaire";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                 }
                 //Import de la vue
@@ -60,7 +75,12 @@ use App\Model\Chocoblast;
             $chocos = $this->getAllChocoblast();
             //Test si il existe des chocoblats
             if(!$chocos){
-                $msg = "Il n'y à aucun chocoblast dans la BDD";  
+                $msg = "Il n'y à aucun chocoblast dans la BDD";
+                echo '<script>
+                    setTimeout(()=>{
+                        modal.style.display = "block";
+                    }, 500);
+                </script>';  
             }
             //Importer la vue
             include './App/Vue/ViewShowAllChocoblast.php';

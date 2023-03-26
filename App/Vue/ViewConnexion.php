@@ -10,8 +10,9 @@
 <body>
      <!--import du menu -->
      <?php include './App/Vue/viewMenu.php';?>
-     <div class="form">
-        <h3>Connexion :</h3>
+     
+     <section class="formContainer">
+     <h3>Connexion :</h3>
         <form action="" method="post">
             <label for="mail_utilisateur">Saisir votre mail :</label>
             <input type="email" name="mail_utilisateur">
@@ -19,8 +20,14 @@
             <input type="password" name="password_utilisateur">
             <input type="submit" value="Connexion" name="submit">
         </form>
-        <div id="error"><?php echo $msg; ?></div>
-        <div id="valide"><?php echo $valide; ?></div>
-     </div>
+    </section>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p><?= $msg ?></p>
+        </div>
+    </div>
 </body>
 </html>

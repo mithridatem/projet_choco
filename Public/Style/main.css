@@ -1,35 +1,58 @@
 body{
     margin: 0;
     padding: 0;
+    width: inherit;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/* Menu */
-#navbar{
+
+/*----------------------------------
+                Menu
+----------------------------------*/
+body>div:nth-child(1){
     display: flex;
     flex-direction: row;
     width: 100vw;
     height: 10vh;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
     background-color: rgb(70, 70, 70);
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 li>a{
-    font-size: 1.5em;
+    font-size: 102%;
     color: whitesmoke;
     text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.5s;
 }
-li, h3{
-    margin: auto;
+li>a:hover{
+    color :blue;
+}
+li{
     list-style: none;
+}
+
+section>h3:nth-child(1){
+    margin:15vh 0 10vh 0;
     text-align: center;
 }
-/*Formulaire*/
-.form{
+/*----------------------------------
+            Formulaire
+----------------------------------*/
+.formContainer{
     display: flex;
     flex-direction: column;
-    width: 30vw;
-    margin-top: 20vh;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height:80vh;
+    align-items: center;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    
 }
 input, label, h3{
     width: 30vw;
@@ -42,3 +65,141 @@ input[type=submit]{
 input{
     border-radius: 8px;
 }
+select{
+    border-radius: 8px;
+    height: 1.5rem;
+}
+/*----------------------------------
+            Chocoblast
+----------------------------------*/
+#parent{
+    margin:20vh 0 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width: inherit;
+}
+.chocoContainer{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90vw;
+    height: 70vh;
+    justify-items: center;
+    align-items: center;
+    gap: 1em;
+}
+.choco{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    width: 28vw;
+    height: 100%;
+    background-color: rgb(185, 185, 185);
+    border-radius: 10px;
+}
+/* card content */
+.choco>p:nth-child(1){
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    background-color: yellow;
+    justify-self: center;
+}
+.choco>p:nth-child(2){
+    grid-column: 3 / span 4;
+    grid-row: 1/span 2;
+    justify-self: center;
+    align-self: center;
+}
+.choco>p:nth-child(3){
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+}
+.choco>p:nth-child(4){
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}
+.choco>p:nth-child(5){
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+}
+.choco>p:nth-child(6){
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+}
+.choco>p:nth-child(7){
+    grid-column: 3 / span 4;
+    grid-row: 3;
+    justify-self: center;
+}
+/* icones */
+.choco>div:nth-child(8){
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+}
+@media only screen and (max-width:1024px){
+    .chocoContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .choco{
+        margin-top: 1em;
+        width: 40vw;
+        height: 30vh;
+    }
+}
+@media only screen and (max-width:576px){
+    .chocoContainer{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .choco{
+        width: 90%;
+    }
+}
+/*----------------------------------
+            Modal
+----------------------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

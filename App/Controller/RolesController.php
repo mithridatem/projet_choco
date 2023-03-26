@@ -18,6 +18,11 @@
                     //Test si le role existe déja
                     if($this->getRolesByName()){
                         $msg = "Le role : ".$nom." existe déja en BDD";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                     //Test si il n'existe pas 
                     else{
@@ -25,12 +30,22 @@
                         $this->addRoles();
                         //Afficher la confirmation
                         $msg = "Le role : ".$nom." à été ajouté en BDD";
+                        echo '<script>
+                            setTimeout(()=>{
+                                modal.style.display = "block";
+                            }, 500);
+                        </script>';
                     }
                 }
                 //Test si les champs sont vides
                 else{
                     //afficher l'erreur
                     $msg = "Veuillez remplir les champs de formulaire";
+                    echo '<script>
+                        setTimeout(()=>{
+                            modal.style.display = "block";
+                        }, 500);
+                    </script>';
                 }
             }
             //Importer la vue
