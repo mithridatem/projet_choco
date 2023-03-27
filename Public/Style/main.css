@@ -79,7 +79,7 @@ select{
 .filter{
     display: flex;
     flex-direction: row;
-    padding-top: 10vh;
+    margin-top: 12vh;
     width: 30vw;
     justify-content:left;
     height: 5vh;

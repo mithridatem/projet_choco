@@ -12,7 +12,7 @@
      <?php include './App/Vue/viewMenu.php';?>
      
      <section class="formContainer">
-     <h3>Connexion :</h3>
+        <h3>Connexion :</h3>
         <form action="" method="post">
             <label for="mail_utilisateur">Saisir votre mail :</label>
             <input type="email" name="mail_utilisateur">

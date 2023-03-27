@@ -132,6 +132,7 @@
                             $_SESSION['prenom'] = $data[0]->prenom_utilisateur;
                             $_SESSION['mail'] = $data[0]->mail_utilisateur;
                             $_SESSION['id'] = $data[0]->id_utilisateur;
+                            header('Location: ./');
                         }
                         //Test si le mot de passe est incorrect
                         else{
