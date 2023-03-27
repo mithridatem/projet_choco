@@ -51,7 +51,7 @@
                 break;
             }
     }
-    //routeur no connecté
+    //routeur non connecté
     else{
         switch ($path) {
             case '/projet/':

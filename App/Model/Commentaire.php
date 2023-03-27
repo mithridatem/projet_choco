@@ -19,8 +19,10 @@ use App\Model\Utilisateur;
                     Constructeur
         -------------------------------*/
         public function __construct(){
+            //Instance d'objet utilisateur et Chocoblast
             $this->id_chocoblast = new Chocoblast();
             $this->auteur_commentaire = new Utilisateur();
+            //Passe l'attribut à true par défaut 
             $this->statut_commentaire = true;
         }
         /*-------------------------------
