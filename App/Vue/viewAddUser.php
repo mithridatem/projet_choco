@@ -12,7 +12,7 @@
     <?php include './App/Vue/viewMenu.php';?>
     <section class="formContainer">
         <h3>Ajouter un compte utilisateur :</h3>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="nom_utilisateur">saisir votre nom :</label>
             <input type="text" name="nom_utilisateur">
             <label for="prenom_utilisateur">saisir votre prénom :</label>
@@ -21,6 +21,8 @@
             <input type="email" name="mail_utilisateur">
             <label for="password_utilisateur">saisir votre mot de passe :</label>
             <input type="password" name="password_utilisateur">
+            <label for="image_utilisateur">Ajouter une image :</label>
+            <input type="file" name="image_utilisateur">
             <input type="submit" value="Ajouter" name="submit">
         </form>
     </section>

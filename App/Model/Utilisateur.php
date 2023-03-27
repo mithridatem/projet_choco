@@ -56,6 +56,9 @@
         public function setPasswordUtilisateur(?string $pwd):void{
             $this->password_utilisateur = $pwd;
         }
+        public function setImageUtilisateur(?string $image):void{
+            $this->image_utilisateur = $image;
+        }
         /*-----------------------
                 Méthodes
         ------------------------*/
@@ -67,12 +70,13 @@
                 $prenom = $this->prenom_utilisateur;
                 $mail = $this->mail_utilisateur;
                 $password = $this->password_utilisateur;
+                $image = $this->image_utilisateur;
                 //récupération du role
                 $id = $this->roles->getIdRoles();
                 //préparer la requête
                 $req = $this->connexion()->prepare('INSERT INTO utilisateur(nom_utilisateur, 
                 prenom_utilisateur, mail_utilisateur, 
-                password_utilisateur, id_roles) VALUES(?,?,?,?,?)');
+                password_utilisateur, id_roles, image_utilisateur) VALUES(?,?,?,?,?,?)');
                 //bind les paramètres
                 $req->bindParam(1, $nom, \PDO::PARAM_STR);
                 $req->bindParam(2, $prenom, \PDO::PARAM_STR);
@@ -80,6 +84,8 @@
                 $req->bindParam(4, $password, \PDO::PARAM_STR);
                 //Bind du role
                 $req->bindParam(5, $id, \PDO::PARAM_INT);
+                //Bind l'image utilisateur
+                $req->bindParam(6, $image, \PDO::PARAM_STR);
                 //Exécuter la requête
                 $req->execute();
             } 
