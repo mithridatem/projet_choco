@@ -39,6 +39,7 @@
                 <div>
                     <a href="./chocoblastUpdate?id_chocoblast=<?=$value->id_chocoblast?>&id_cible=<?=$value->id_cible?>"><i class="fa-solid fa-pen"></i></a>
                     <a href="./chocoblastDelete?id_chocoblast=<?=$value->id_chocoblast?>"><i class="fa-solid fa-trash-can"></i></a> 
+                    <a href="./commentaireAdd?id_chocoblast=<?=$value->id_chocoblast?>"><i class="fa-regular fa-comment"></i></a> 
                 </div>
             </div>
         <?php    
