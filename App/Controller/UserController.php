@@ -5,48 +5,92 @@
     class UserController extends Utilisateur{
         //fonction qui va gérer l'ajout d'un utilisateur en BDD
         public function insertUser(){
-            //variable pour stocker les messages d'erreurs
+            //Variable pour stocker les messages d'erreurs
             $msg = "";
             /*-------------------------------
                         logique 
             --------------------------------*/
-            //test si le bouton est cliqué 
+            //Test si le bouton est cliqué 
             if(isset($_POST['submit'])){
-                //récupération et nettoyage des inputs utilisateurs
+                //Récupération et nettoyage des inputs utilisateurs
                 $nom = Fonctions::cleanInput($_POST['nom_utilisateur']);
                 $prenom = Fonctions::cleanInput($_POST['prenom_utilisateur']);
                 $mail = Fonctions::cleanInput($_POST['mail_utilisateur']);
                 $password = Fonctions::cleanInput($_POST['password_utilisateur']);
-                //tester si les champs sont remplis
+                //Tester si les champs sont remplis
                 if(!empty($nom) AND !empty($prenom)AND !empty($mail) AND !empty($password)){
-                    //récupérer le mail dans un objet
-                    $this->setMailUtilisateur($mail);
-                    //tester si le compte existe déja
-                    if($this->getUserByMail()){
-                        $msg = "Les informations sont incorrectes";
-                        echo '<script>
-                            setTimeout(()=>{
-                                modal.style.display = "block";
-                            }, 500);
-                        </script>';
+                    //Tester si l'utilisateur à importé une image
+                    if(!empty($_FILES['image_utilisateur']['tmp_name'])){
+                        //Stocker le nom de l'image
+                        $image = $_FILES['image_utilisateur']['name'];
+                        //Stocker le nom temporaire
+                        $temp = $_FILES['image_utilisateur']['tmp_name'];
+                        //déplacer l'image sur le serveur
+                        $fichier = move_uploaded_file($temp, './Public/Image/'.$image.'');
+                        //récupérer le mail dans un objet
+                        $this->setMailUtilisateur($mail);
+                        //tester si le compte existe déja
+                        if($this->getUserByMail()){
+                            $msg = "Les informations sont incorrectes";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
+                        }
+                        //test si le compte n'existe pas
+                        else{
+                            //hash du mot de passe
+                            $password = password_hash($password, PASSWORD_DEFAULT);
+                            //version alternative avec $this
+                            $this->setNomUtilisateur($nom);
+                            $this->setPrenomUtilisateur($prenom);
+                            $this->setPasswordUtilisateur($password);
+                            $this->setImageUtilisateur('Public/Image/'.$image);
+                            //ajout du compte en BDD
+                            $this->addUser();
+                            //affichage de l'erreur
+                            $msg = "Le compte : ".$mail." a été ajouté en BDD";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
+                        }
                     }
-                    //test si le compte n'existe pas
+                    //Tester si l'image n'existe pas
                     else{
-                        //hash du mot de passe
-                        $password = password_hash($password, PASSWORD_DEFAULT);
-                        //version alternative avec $this
-                        $this->setNomUtilisateur($nom);
-                        $this->setPrenomUtilisateur($prenom);
-                        $this->setPasswordUtilisateur($password);
-                        //ajout du compte en BDD
-                        $this->addUser();
-                        //affichage de l'erreur
-                        $msg = "Le compte : ".$mail." a été ajouté en BDD";
-                        echo '<script>
-                            setTimeout(()=>{
-                                modal.style.display = "block";
-                            }, 500);
-                        </script>';
+                        $image = 'Public/Image/userDefault.png';
+                        //récupérer le mail dans un objet
+                        $this->setMailUtilisateur($mail);
+                        //tester si le compte existe déja
+                        if($this->getUserByMail()){
+                            $msg = "Les informations sont incorrectes";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
+                        }
+                        //test si le compte n'existe pas
+                        else{
+                            //hash du mot de passe
+                            $password = password_hash($password, PASSWORD_DEFAULT);
+                            //version alternative avec $this
+                            $this->setNomUtilisateur($nom);
+                            $this->setPrenomUtilisateur($prenom);
+                            $this->setPasswordUtilisateur($password);
+                            $this->setImageUtilisateur($image);
+                            //ajout du compte en BDD
+                            $this->addUser();
+                            //affichage de l'erreur
+                            $msg = "Le compte : ".$mail." a été ajouté en BDD";
+                            echo '<script>
+                                setTimeout(()=>{
+                                    modal.style.display = "block";
+                                }, 500);
+                            </script>';
+                        }
                     }
                 }
                 //sinon si les champs ne sont pas tous remplis
