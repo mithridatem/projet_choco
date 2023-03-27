@@ -13,6 +13,15 @@
 <body>
     <!--import du menu -->
     <?php include './App/Vue/viewMenu.php';?>
+    <form class="filter" action="" method="post">
+        <select name="filter">
+            <option value="1">Date Croissant</option>
+            <option value="2">Date Décroissant</option>
+            <option value="3">Nom Croissant</option>
+            <option value="4">Nom Décroissant</option>
+        </select>
+        <input type="submit" value="Filtrer" name="submit">
+    </form>
     <section id="parent">
     <div class="chocoContainer">
         <?php 

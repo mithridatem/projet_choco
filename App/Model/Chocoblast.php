@@ -114,16 +114,50 @@ use App\Model\Utilisateur;
             return $data;
         }
         //Méthode qui retourne tous les chocoblasts actif (statut_chocoblast = 1)
-        public function getAllChocoblast():?array{
+        public function getAllChocoblast(int $filter):?array{
+            $requete =  '';
+            if($filter == 1){
+                $requete = 'SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
+                auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
+                auteur.id_utilisateur AS id_auteur, 
+                cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
+                cible.id_utilisateur AS id_cible FROM chocoblast 
+                INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
+                INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
+                WHERE statut_chocoblast = 1 ORDER BY date_chocoblast ASC';
+            }
+            elseif($filter == 2){
+                $requete = 'SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
+                auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
+                auteur.id_utilisateur AS id_auteur, 
+                cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
+                cible.id_utilisateur AS id_cible FROM chocoblast 
+                INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
+                INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
+                WHERE statut_chocoblast = 1 ORDER BY date_chocoblast DESC';
+            }
+            elseif($filter == 3){
+                $requete = 'SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
+                auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
+                auteur.id_utilisateur AS id_auteur, 
+                cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
+                cible.id_utilisateur AS id_cible FROM chocoblast 
+                INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
+                INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
+                WHERE statut_chocoblast = 1 ORDER BY slogan_chocoblast ASC';
+            }
+            else{
+                $requete = 'SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
+                auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
+                auteur.id_utilisateur AS id_auteur, 
+                cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
+                cible.id_utilisateur AS id_cible FROM chocoblast 
+                INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
+                INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
+                WHERE statut_chocoblast = 1 ORDER BY slogan_chocoblast DESC';
+            }
             //Préparer la requête
-            $req = $this->connexion()->prepare('SELECT id_chocoblast, slogan_chocoblast, date_chocoblast, 
-            auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
-            auteur.id_utilisateur AS id_auteur, 
-            cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
-            cible.id_utilisateur AS id_cible FROM chocoblast 
-            INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
-            INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
-            WHERE statut_chocoblast = 1');
+            $req = $this->connexion()->prepare($requete);
             //Exécution de la requête
             $req->execute();
             //Récupérer le chocoblast

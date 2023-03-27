@@ -70,9 +70,27 @@ use App\Model\Chocoblast;
         }
         //Méthode qui va afficher tous les chocoblasts
         public function showAllChocoblast():void{
+            //valeur par défaut du tableau
+            $chocos = $this->getAllChocoblast(1);
+            //Tester si le formulaire est submit
+            if(isset($_POST['submit'])){
+                switch($_POST['filter']){
+                    case 1:
+                        $chocos = $this->getAllChocoblast(1);
+                        break;
+                    case 2:
+                        $chocos = $this->getAllChocoblast(2);
+                        break;
+                    case 3:
+                        $chocos = $this->getAllChocoblast(3);
+                        break;
+                    case 4:
+                        $chocos = $this->getAllChocoblast(4);
+                        break;
+                }
+            }
             //Variables pour les messages
             $msg = "";
-            $chocos = $this->getAllChocoblast();
             //Test si il existe des chocoblats
             if(!$chocos){
                 $msg = "Il n'y à aucun chocoblast dans la BDD";
@@ -135,7 +153,7 @@ use App\Model\Chocoblast;
                             $this->setDateChocoblast($date);
                             $this->getCibleChocoblast()->setIdUtilisateur($cible);
                             $this->getAuteurChocoblast()->setIdUtilisateur($auteur);
-                            //Mise à jour en  BDD
+                            //Mise à jour en BDD
                             $this->updateChocoblast();
                             //Gestion de l'erreur
                             $msg = "Le chocoblast : $id à été mis à jour en BDD";
