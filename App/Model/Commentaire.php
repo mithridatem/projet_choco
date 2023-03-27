@@ -73,5 +73,33 @@ use App\Model\Utilisateur;
         /*-------------------------------
                     Méthodes
         --------------------------------*/
+        public function addCommentaire():void{
+            try{
+                //Récupérer les valeurs de l'objet
+                $note = $this->note_commentaire;
+                $text = $this->text_commentaire;
+                $date = $this->date_commentaire;
+                $statut = $this->statut_commentaire;
+                $auteur = $this->auteur_commentaire->getIdUtilisateur();
+                $chocoblast = $this->id_chocoblast->getIdChocoblast();
+                //Préparer la requête
+                $req = $this->connexion()->prepare('INSERT INTO commentaire(note_commentaire, text_commentaire, 
+                date_commentaire, statut_commentaire, auteur_commentaire, id_chocoblast) VALUES 
+                (?,?,?,?,?,?)');
+                //Bind les paramètres
+                $req->bindParam(1, $note, \PDO::PARAM_INT);
+                $req->bindParam(2, $text, \PDO::PARAM_STR);
+                $req->bindParam(3, $date, \PDO::PARAM_STR);
+                $req->bindParam(4, $statut, \PDO::PARAM_BOOL);
+                $req->bindParam(5, $auteur, \PDO::PARAM_INT);
+                $req->bindParam(6, $chocoblast, \PDO::PARAM_INT);
+                //Exécuter la requête
+                $req->execute();
+            } 
+            catch (\Exception $e) {
+                die('Erreur :'.$e->getMessage());
+            }
+            
+        }
     }
 ?>
