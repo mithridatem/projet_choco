@@ -83,6 +83,7 @@ select{
     width: 30vw;
     justify-content:left;
     height: 5vh;
+    margin-left: 10vw;
 }
 .filter>input[type=submit]:nth-child(2){
     width: 10vw;
