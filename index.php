@@ -5,6 +5,7 @@
     use App\Controller\UserController;
     use App\Controller\RolesController;
     use App\Controller\ChocoblastController;
+    use App\Controller\CommentaireController;
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
     include './App/Model/Roles.php';
@@ -13,6 +14,9 @@
     include './App/Controller/UserController.php';
     include './App/Model/Chocoblast.php';
     include './App/Controller/ChocoblastController.php';
+    include './App/Model/Commentaire.php';
+    include './App/Controller/CommentaireController.php';
+    
 
     //Analyse de l'URL avec parse_url() et retourne ses composants
     $url = parse_url($_SERVER['REQUEST_URI']);
@@ -22,6 +26,7 @@
     $userController = new UserController();
     $rolesController = new RolesController();
     $chocoblastController = new ChocoblastController();
+    $commentaireController = new CommentaireController();
     //routeur connecte
     if(isset($_SESSION['connected'])){
         switch ($path) {
@@ -42,6 +47,9 @@
                 break;
             case '/projet/chocoblastUpdate':
                 $chocoblastController->updateChocoblastById();
+                break;
+            case '/projet/commentaireAdd':
+                $commentaireController->insertCommentaire();
                 break;
             case '/projet/deconnexion':
                 $userController->deconnexionUser();
@@ -67,6 +75,9 @@
                 header('Location: ./chocoblastAll');
                 break;
             case '/projet/chocoblastUpdate':
+                header('Location: ./chocoblastAll');
+                break;
+            case '/projet/commentaireAdd':
                 header('Location: ./chocoblastAll');
                 break;
             case '/projet/connexion':
