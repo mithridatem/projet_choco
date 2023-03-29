@@ -130,11 +130,12 @@ select{
     justify-self: center;
     align-self: center;
 }
-.choco>p:nth-child(2){
+.choco>img:nth-child(2){
     grid-column: 3 / span 4;
     grid-row: 1/span 2;
     justify-self: center;
     align-self: center;
+    height: 12vh;
 }
 .choco>p:nth-child(3){
     grid-column: 1;
@@ -169,9 +170,10 @@ select{
     align-self: center;
 }
 a>i{
-    color: black;
+    color: blue;
     /*text-decoration: none;*/
 }
+/*image */
 @media only screen and (max-width:1024px){
     .chocoContainer{
         grid-template-columns: repeat(2, 1fr);
@@ -181,6 +183,13 @@ a>i{
         width: 40vw;
         height: 30vh;
     }
+    .choco>img:nth-child(2){
+        grid-column: 3 / span 4;
+        grid-row: 1/span 2;
+        justify-self: center;
+        align-self: center;
+        height: 12vh;
+    }
 }
 @media only screen and (max-width:576px){
     .chocoContainer{
@@ -188,6 +197,13 @@ a>i{
     }
     .choco{
         width: 90%;
+    }
+    .choco>img:nth-child(2){
+        grid-column: 3 / span 4;
+        grid-row: 1/span 2;
+        justify-self: center;
+        align-self: center;
+        height: 14vh;
     }
 }
 /*----------------------------------

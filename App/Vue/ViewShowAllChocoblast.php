@@ -30,7 +30,7 @@
         ?>
             <div class="choco">
                 <p><?=$value->slogan_chocoblast?></p>
-                <p>image here</p>
+                <img src="<?=$value->image_cible ?>">
                 <p><?=$value->nom_cible?></p>
                 <p><?=$value->prenom_cible?></p>
                 <p><?=$value->nom_auteur?></p>
