@@ -9,19 +9,20 @@ use Firebase\JWT\JWT;
     header('Content-Type: application/json');
     header('Accept: application/json');
                 
-    
+    //Variable pour le token
     $issuedAt   = new \DateTimeImmutable();
-    $expire     = $issuedAt->modify('+1 minutes')->getTimestamp();      // Add 60 seconds
+    $expire     = $issuedAt->modify('+1 minutes')->getTimestamp();
     $serverName = "your.domain.name";
-    $username   = "username";                                           // Retrieved from filtered POST data
-
+    $username   = "username";
+    //Contenu du token
     $data = [
-        'iat'  => $issuedAt->getTimestamp(),         // Issued at: time when the token was generated
-        'iss'  => $serverName,                       // Issuer
-        'nbf'  => $issuedAt->getTimestamp(),         // Not before
-        'exp'  => $expire,                           // Expire
-        'userName' => $username,                     // User name
+        'iat'  => $issuedAt->getTimestamp(),         // Timestamp génération du token
+        'iss'  => $serverName,                       // Serveur
+        'nbf'  => $issuedAt->getTimestamp(),         // Timestamp empécher date antérieure
+        'exp'  => $expire,                           // Timestamp expiration du token
+        'userName' => $username,                     // Nom utilisateur
     ];
+    //retourne le JWT token encode
     echo JWT::encode(
         $data,
         $secretKey,
