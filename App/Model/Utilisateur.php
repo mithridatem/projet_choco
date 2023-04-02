@@ -62,7 +62,7 @@
         /*-----------------------
                 Méthodes
         ------------------------*/
-        //méthode pour ajouter un utilisateur en BDD
+        //Méthode pour ajouter un utilisateur en BDD
         public function addUser():void{
             try {
                 //récupérer les données
@@ -93,7 +93,7 @@
                 die('Erreur : '.$e->getMessage());
             }
         }
-        //méthode pour récupérer un utilisateur avec son mail
+        //Méthode pour récupérer un utilisateur avec son mail
         public function getUserByMail():?array{
             //exécution de la requête
             try {
@@ -118,12 +118,37 @@
                 die('Erreur : '.$e->getMessage());
             }
         }
+        //Méthode pour récupérer un utilisateur avec son id
+        public function getUserById():array{
+            //exécution de la requête
+            try {
+                //récupération du mail
+                $id = $this->id_utilisateur;
+                //préparation de la requête
+                $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur,
+                mail_utilisateur, image_utilisateur, statut_utilisateur, id_roles
+                FROM utilisateur WHERE id_utilisateur = ?');
+                //bind des paramètres
+                $req->bindParam(1, $id, \PDO::PARAM_INT);
+                //éxécution de la requête
+                $req->execute();
+                //récupération sous forme de tableau d'objets
+                $data = $req->fetchAll(\PDO::FETCH_OBJ);
+                //retour du tableau
+                return $data;
+            }
+            //gestion des erreurs (Exception)
+            catch (\Exception $e){
+                //affichage de l'erreur
+                die('Erreur : '.$e->getMessage());
+            }
+        }
         //Méthode qui retourne tous les utilisateurs
         public function getUserAll():?array{
             try{
                 //Préparer la requête
                 $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, 
-                prenom_utilisateur, mail_utilisateur, image_utilisateur FROM utilisateur');
+                prenom_utilisateur, mail_utilisateur, image_utilisateur, statut_utilisateur FROM utilisateur');
                 //Exécuter la requête
                 $req->execute();
                 //Récupérer la liste des utilisateurs

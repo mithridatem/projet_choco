@@ -1,9 +1,22 @@
 # Activation du rewrite des URL
 RewriteEngine On
-# base du projet (emplacement à partir de la racine du serveur)
+# Base du projet (emplacement à partir de la racine du serveur)
 RewriteBase /projet
-# si ce n'est pas un répertoire
+# Si ce n'est pas un répertoire
 RewriteCond %{REQUEST_FILENAME} !-d
 # Si ce n'est pas un fichier
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php [QSA,L]
+# Bloquer les fichiers
+<Files *.html>
+order allow,deny
+Deny from all
+</Files>
+<Files *.json>
+order allow,deny
+Deny from all
+</Files>
+# Désactiver l'affichage du contenu des répertoires
+Options All -Indexes
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
