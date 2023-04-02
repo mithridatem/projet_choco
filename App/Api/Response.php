@@ -18,7 +18,7 @@ use Firebase\JWT\Key;
     if (! preg_match('/Bearer\s(\S+)/', $_SERVER['HTTP_AUTHORIZATION'], $matches)) {
         //Réponse
         header('HTTP/1.0 400 Bad Request');
-        exit;
+        die(json_encode(['Error : '=>'Token not found in request']));
     }
     //Vérification du token
     try {

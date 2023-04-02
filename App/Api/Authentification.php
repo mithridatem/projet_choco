@@ -22,7 +22,7 @@
                 require_once('./vendor/autoload.php');
                 //Variable pour le token
                 $issuedAt   = new \DateTimeImmutable();
-                $expire     = $issuedAt->modify('+1 minutes')->getTimestamp();
+                $expire     = $issuedAt->modify('+60 minutes')->getTimestamp();
                 $serverName = "your.domain.name";
                 $username   = $data[0]->nom_utilisateur;
                 //Contenu du token
