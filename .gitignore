@@ -1,0 +1,8 @@
+env.php
+*.jpg
+*.jpeg
+*.png
+*.pdf
+/vendor/
+/cypress/
+/node_modules/

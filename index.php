@@ -6,6 +6,7 @@
     use App\Controller\RolesController;
     use App\Controller\ChocoblastController;
     use App\Controller\CommentaireController;
+    use App\Api\ApiUser;
     include './App/Utils/BddConnect.php';
     include './App/Utils/Fonctions.php';
     include './App/Model/Roles.php';
@@ -16,8 +17,8 @@
     include './App/Controller/ChocoblastController.php';
     include './App/Model/Commentaire.php';
     include './App/Controller/CommentaireController.php';
+    include './App/Api/ApiUser.php';
     
-
     //Analyse de l'URL avec parse_url() et retourne ses composants
     $url = parse_url($_SERVER['REQUEST_URI']);
     //test soit l'url a une route sinon on renvoi à la racine
@@ -27,6 +28,7 @@
     $rolesController = new RolesController();
     $chocoblastController = new ChocoblastController();
     $commentaireController = new CommentaireController();
+    $apiUser = new ApiUser();
     //routeur connecte
     if(isset($_SESSION['connected'])){
         switch ($path) {
@@ -82,6 +84,21 @@
                 break;
             case '/projet/connexion':
                 $userController->connexionUser();
+                break;
+            case '/projet/api/users/all':
+                $apiUser->getAllUsersJson();
+                break;
+            case '/projet/api/users/id':
+                $apiUser->getUserByIdJson();
+                break;
+            case '/projet/api/users/add':
+                $apiUser->addUserByJson();
+                break;
+            case '/projet/api/auth':
+                include './App/Api/Authentification.php';
+                break;
+            case '/projet/api/response':
+                include './App/Api/Response.php';
                 break;
             default:
                 include './App/Vue/error.php';

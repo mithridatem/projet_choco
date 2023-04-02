@@ -132,7 +132,7 @@ use App\Model\Utilisateur;
                 auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
                 auteur.id_utilisateur AS id_auteur, 
                 cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
-                cible.id_utilisateur AS id_cible FROM chocoblast 
+                cible.id_utilisateur AS id_cible , cible.image_utilisateur AS image_cible FROM chocoblast 
                 INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
                 INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
                 WHERE statut_chocoblast = 1 ORDER BY date_chocoblast DESC';
@@ -142,7 +142,8 @@ use App\Model\Utilisateur;
                 auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
                 auteur.id_utilisateur AS id_auteur, 
                 cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
-                cible.id_utilisateur AS id_cible FROM chocoblast 
+                cible.id_utilisateur AS id_cible , cible.image_utilisateur AS image_cible 
+                FROM chocoblast 
                 INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
                 INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
                 WHERE statut_chocoblast = 1 ORDER BY slogan_chocoblast ASC';
@@ -152,7 +153,8 @@ use App\Model\Utilisateur;
                 auteur.nom_utilisateur AS nom_auteur, auteur.prenom_utilisateur AS prenom_auteur,
                 auteur.id_utilisateur AS id_auteur, 
                 cible.nom_utilisateur AS nom_cible, cible.prenom_utilisateur AS prenom_cible, 
-                cible.id_utilisateur AS id_cible FROM chocoblast 
+                cible.id_utilisateur AS id_cible , cible.image_utilisateur AS image_cible
+                FROM chocoblast 
                 INNER JOIN utilisateur AS cible ON cible_chocoblast = cible.id_utilisateur
                 INNER JOIN utilisateur AS auteur ON auteur_chocoblast = auteur.id_utilisateur
                 WHERE statut_chocoblast = 1 ORDER BY slogan_chocoblast DESC';
