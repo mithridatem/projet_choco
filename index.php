@@ -44,6 +44,9 @@
             case '/projet/chocoblastAll':
                 $chocoblastController->showAllChocoblast();
                 break;
+            case '/projet/filter':
+                $chocoblastController->showAllChocoblastJson();
+                break;
             case '/projet/chocoblastDelete':
                 $chocoblastController->deleteChocoblastById();
                 break;
@@ -72,6 +75,12 @@
                 break;
             case '/projet/chocoblastAll':
                 $chocoblastController->showAllChocoblast();
+                break;
+            case '/projet/chocobalstFilter':
+                $chocoblastController->showAllChocoblastJson();
+                break;
+            case '/projet/api/chocoFilter':
+                $chocoblastController->chocoJson();
                 break;
             case '/projet/chocoblastDelete':
                 header('Location: ./chocoblastAll');

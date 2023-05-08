@@ -189,5 +189,39 @@ use App\Model\Chocoblast;
                 header('Location: ./chocoblastAll');
             }
         }
+
+        //méthode qui retourne un json filtré
+        public function showAllChocoblastJson(){
+            //Importer la vue
+            include './App/Vue/ViewShowAllChocoblastFilter.php';
+        }
+        public function chocoJson(){
+             //Construction du header
+             header('Access-Control-Allow-Origin: *');
+             header('Access-Control-Allow-Methods: POST');
+             header('Content-Type: application/json');
+             header('Accept: application/json');
+            if(isset($_GET['filter'])){
+                $filter = $_GET['filter'];
+                switch($filter){
+                    case 1:
+                        $chocos = $this->getAllChocoblast(1);
+                        break;
+                    case 2:
+                        $chocos = $this->getAllChocoblast(2);
+                        break;
+                    case 3:
+                        $chocos = $this->getAllChocoblast(3);
+                        break;
+                    case 4:
+                        $chocos = $this->getAllChocoblast(4);
+                        break;
+                }
+            }
+            else{
+                $chocos = $this->getAllChocoblast(1);
+            }
+            echo json_encode($chocos);
+        }
     }
 ?>

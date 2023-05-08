@@ -246,3 +246,11 @@ a>i{
     text-decoration: none;
     cursor: pointer;
 }
+#filter{
+    margin-top: 100px;
+    width: 50vw;
+}
+input[type="checkbox"]{
+    width: 10px;
+    height: 10px;
+}
