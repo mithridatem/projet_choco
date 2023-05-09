@@ -2,7 +2,7 @@ name: Add Action
 on:
  push:
    branches:
-     - main
+     - master
 jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
