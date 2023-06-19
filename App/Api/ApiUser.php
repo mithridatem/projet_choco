@@ -53,7 +53,6 @@ use App\Utils\Fonctions;
             //Construction du header
             header('Access-Control-Allow-Origin: *');
             header('Access-Control-Allow-Methods: POST');
-            header('Content-Type: application/json');
             header('Accept: application/json');
             //Test si la méthode est POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -69,6 +68,9 @@ use App\Utils\Fonctions;
                     $this->setPasswordUtilisateur(password_hash($data['password'], PASSWORD_DEFAULT));
                     $this->setImageUtilisateur($data['image']);
                     $this->addUser();
+                    header('Access-Control-Allow-Methods: GET');
+                    header('Content-Type: application/json');
+                    header('HTTP/1.0 200');
                     echo json_encode(['Valid'=>'Le compte a ete ajouté']);
                 }
                 //Test le json n'existe pas
