@@ -9,13 +9,13 @@ check.forEach(e=>{
     e.addEventListener('change',()=>{
         if(e.checked){
             let id =e.value;
-            console.log('id coché : '+id);
+            console.log('checkbox cochée : '+id);
             check.forEach(el=>{
                 //si la checkbox est différente de la checkbox sélectionnée
                 if(el.value!=id){
                     //on passe la checkbox à false (déchoché)
                     el.checked = false;
-                    console.log('checkbox '+el.value+' déchoché');
+                    console.log('checkbox '+el.value+' déchochée');
                 }
             });
             /* if(id==1){
