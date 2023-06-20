@@ -8,7 +8,7 @@ const affiche = fetch(url+1).then(async response =>{
 check.forEach(e=>{
     e.addEventListener('change',()=>{
         if(e.checked){
-            let id =e.value;
+            let id = e.value;
             console.log('checkbox cochée : '+id);
             check.forEach(el=>{
                 //si la checkbox est différente de la checkbox sélectionnée
