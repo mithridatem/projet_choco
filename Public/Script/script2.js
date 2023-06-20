@@ -1,6 +1,6 @@
 let check = document.querySelectorAll('.choco');
 const result = document.querySelector('#result');
-let url = "http://localhost/projet/api/chocoFilter?filter=";
+let url = "http://localhost/projet_choco/api/chocoFilter?filter=";
 console.log(check)
 const affiche = fetch(url+1).then(async response =>{
     console.log(await response.json());
@@ -33,7 +33,7 @@ check.forEach(e=>{
                 check[2].checked = false;
                 id = 4;
             }
-            fetch("http://localhost/projet/api/chocoFilter?filter="+id)
+            fetch("http://localhost/projet_choco/api/chocoFilter?filter="+id)
             .then(async response =>{
                 console.log(await response.json());
             })

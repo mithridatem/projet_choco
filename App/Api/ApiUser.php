@@ -10,7 +10,7 @@ use App\Utils\Fonctions;
             header('Access-Control-Allow-Methods: GET');
             header('Content-Type: application/json');
             //Récupération des utilisateurs
-            $json = $this->getUserAll();
+            $json = $this->getUserAll(20);
             //Test si il y à des utilisateurs en BDD
             if($json){
                 //Génération du json

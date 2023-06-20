@@ -168,6 +168,8 @@ select{
     grid-row: 1;
     justify-self: center;
     align-self: center;
+    background-color:rgb(234, 231, 231);
+    border-radius: 5px;
 }
 a>i{
     color: blue;

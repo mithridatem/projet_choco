@@ -144,11 +144,13 @@
             }
         }
         //Méthode qui retourne tous les utilisateurs
-        public function getUserAll():?array{
+        public function getUserAll($id):?array{
             try{
                 //Préparer la requête
                 $req = $this->connexion()->prepare('SELECT id_utilisateur, nom_utilisateur, 
-                prenom_utilisateur, mail_utilisateur, image_utilisateur, statut_utilisateur FROM utilisateur');
+                prenom_utilisateur, mail_utilisateur, image_utilisateur, statut_utilisateur FROM utilisateur 
+                WHERE id_utilisateur !=?');
+                $req->bindParam(1, $id, \PDO::PARAM_INT);
                 //Exécuter la requête
                 $req->execute();
                 //Récupérer la liste des utilisateurs

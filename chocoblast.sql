@@ -4,7 +4,7 @@ use chocoblast;
 
 -- création des tables
 create table utilisateur(
-id_utilisateur int primary key not null,
+id_utilisateur int primary key auto_increment not null,
 nom_utilisateur varchar(50) not null,
 prenom_utilisateur varchar(50) not null,
 mail_utilisateur varchar(50) not null,
@@ -15,12 +15,12 @@ id_roles int null
 )Engine=InnoDB;
 
 create table roles(
-id_roles int primary key not null,
+id_roles int primary key auto_increment not null,
 nom_roles varchar(50) not null
 )Engine=InnoDB;
 
 create table chocoblast(
-id_chocoblast int primary key not null,
+id_chocoblast int primary key auto_increment not null,
 slogan_chocoblast text not null,
 date_chocoblast date not null,
 statut_chocoblast tinyint(1) default 0,
@@ -29,7 +29,7 @@ auteur_chocoblast int not null
 )Engine=InnoDB;
 
 create table commentaire(
-id_commentaire int primary key not null,
+id_commentaire int primary key auto_increment not null,
 note_commentaire int not null,
 text_commentaire text not null,
 date_commentaire datetime not null,

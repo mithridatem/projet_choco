@@ -10,7 +10,7 @@ use App\Model\Chocoblast;
             if(isset($_SESSION['connected'])){
                 //Générer la liste déroulante cible
                 $user = new Utilisateur();
-                $data = $user->getUserAll();
+                $data = $user->getUserAll($_SESSION['id']);
                 //Variable pour stocker les messages d'erreur
                 $msg = "";
                 //Tester si le formulaire est submit
@@ -131,7 +131,7 @@ use App\Model\Chocoblast;
             $msg = "";
             //Générer la liste déroulante cible
             $user = new Utilisateur();
-            $data = $user->getUserAll();
+            $data = $user->getUserAll($_SESSION['id']);
             //Test si l'utilisateur est connecté
             if(isset($_SESSION['connected'])){
                 //Test si l'id_chocoblast existe

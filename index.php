@@ -32,31 +32,31 @@
     //routeur connecte
     if(isset($_SESSION['connected'])){
         switch ($path) {
-            case '/projet/':
+            case '/projet_choco/':
                 include './App/Vue/home.php';
                 break;
-            case '/projet/rolesAdd':
+            case '/projet_choco/rolesAdd':
                 $rolesController->insertRoles();
                 break;
-            case '/projet/chocoblastAdd':
+            case '/projet_choco/chocoblastAdd':
                 $chocoblastController->insertChocoblast();
                 break;
-            case '/projet/chocoblastAll':
+            case '/projet_choco/chocoblastAll':
                 $chocoblastController->showAllChocoblast();
                 break;
-            case '/projet/chocoblastFilter':
+            case '/projet_choco/chocoblastFilter':
                 $chocoblastController->showAllChocoblastJson();
                 break;
-            case '/projet/chocoblastDelete':
+            case '/projet_choco/chocoblastDelete':
                 $chocoblastController->deleteChocoblastById();
                 break;
-            case '/projet/chocoblastUpdate':
+            case '/projet_choco/chocoblastUpdate':
                 $chocoblastController->updateChocoblastById();
                 break;
-            case '/projet/commentaireAdd':
+            case '/projet_choco/commentaireAdd':
                 $commentaireController->insertCommentaire();
                 break;
-            case '/projet/deconnexion':
+            case '/projet_choco/deconnexion':
                 $userController->deconnexionUser();
                 break;
             default:
@@ -67,46 +67,46 @@
     //routeur non connecté
     else{
         switch ($path) {
-            case '/projet/':
+            case '/projet_choco/':
                 include './App/Vue/home.php';
                 break;
-            case '/projet/userAdd':
+            case '/projet_choco/userAdd':
                 $userController->insertUser();
                 break;
-            case '/projet/chocoblastAll':
+            case '/projet_choco/chocoblastAll':
                 $chocoblastController->showAllChocoblast();
                 break;
-            case '/projet/chocoblastFilter':
+            case '/projet_choco/chocoblastFilter':
                 $chocoblastController->showAllChocoblastJson();
                 break;
-            case '/projet/api/chocoFilter':
+            case '/projet_choco/api/chocoFilter':
                 $chocoblastController->chocoJson();
                 break;
-            case '/projet/chocoblastDelete':
+            case '/projet_choco/chocoblastDelete':
                 header('Location: ./chocoblastAll');
                 break;
-            case '/projet/chocoblastUpdate':
+            case '/projet_choco/chocoblastUpdate':
                 header('Location: ./chocoblastAll');
                 break;
-            case '/projet/commentaireAdd':
+            case '/projet_choco/commentaireAdd':
                 header('Location: ./chocoblastAll');
                 break;
-            case '/projet/connexion':
+            case '/projet_choco/connexion':
                 $userController->connexionUser();
                 break;
-            case '/projet/api/users/all':
+            case '/projet_choco/api/users/all':
                 $apiUser->getAllUsersJson();
                 break;
-            case '/projet/api/users/id':
+            case '/projet_choco/api/users/id':
                 $apiUser->getUserByIdJson();
                 break;
-            case '/projet/api/users/add':
+            case '/projet_choco/api/users/add':
                 $apiUser->addUserByJson();
                 break;
-            case '/projet/api/auth':
+            case '/projet_choco/api/auth':
                 include './App/Api/Authentification.php';
                 break;
-            case '/projet/api/response':
+            case '/projet_choco/api/response':
                 include './App/Api/Response.php';
                 break;
             default:
